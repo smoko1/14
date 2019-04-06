@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  font-size: 50px;
+}
+
+p {
+  font-size: 25px;
+  color: red;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 900px;
+  text-align: center;
+}
+
+.carousel-cell {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 50vh;
+  min-height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.my-btn {
+  border: none;
+  outline: none;
+  width: 120px;
+  height: 50px;
+  color: blue;
+  font-size: 20px;
+  background-color: green;
+  position: absolute;
+  left: calc(100% - 140px);
+  top: 90px;
+}
+
+.progress-bar {
+  height: 10px;
+  width: 0;
+  background-color: yellow;
+}

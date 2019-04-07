@@ -13,6 +13,7 @@
 <div class="carousel">
 
 </div>
+
 <script id="slide-template" type="x-tmpl-mustache">
     <div class="carousel-cell" id="slide-{{id}}" style="background-image:  url({{image}})">
         <div class="container">
@@ -20,40 +21,50 @@
             {{{description}}}
          </div>
     </div>
+
 </script>
 <script>
     var slideData = [
         {
             title: 'Hotel',
             image: 'images/hotel.jpg',
-            description: '<p>Nasza baza wypadowa, bardzo polecamy! Super warunki za niewielkie pieniądze</p>'
+            description: '<p>Nasza baza wypadowa, bardzo polecamy! Super warunki za niewielkie pieniądze</p>',
+            coords: {lat: 9.728532, lng: 99.994587}
         },
         {
             title: 'Plaża',
             image: 'images/beach.jpg',
-            description: '<p>Fal nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma faaal..... Nie ma fal, nie ma faaaaal</p>'
-        }, {
+            description: '<p>Fal nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma faaal..... Nie ma fal, nie ma faaaaal</p>',
+            coords: {lat: 9.797209, lng: 99.980294}
+        },
+        {
             title: 'Kawiarnia',
             image: 'images/coffee.jpg',
-            description: '<p>Nasza ulubiona kawiarnia</p>'
+            description: '<p>Nasza ulubiona kawiarnia</p>',
+            coords: {lat: 9.774592, lng: 99.967645}
         },
         {
             title: 'Restauracja',
             image: 'images/restaurant.jpg',
-            description: '<p>Oto nasza ulubiona knajpa. Stosunek jakość do ceny - poziom mistrz!</p>'
+            description: '<p>Oto nasza ulubiona knajpa. Stosunek jakość do ceny - poziom mistrz!</p>',
+            coords: {lat: 9.700337, lng: 100.020323}
         },
         {
             title: 'Impreza',
             image: 'images/party.jpg',
-            description: '<p>Impreza Full Moon Party, tylko tutaj!</p>'
+            description: '<p>Impreza Full Moon Party, tylko tutaj!</p>',
+            coords: {lat: 9.677539, lng: 100.068256}
         }
     ]
 </script>
 <div class="progress-bar"></div>
 <button class="my-btn" id="restartBtn">restart</button>
+<div id="map" class="map"></div>
 <script src="vendor/flickity.pkgd.min.js"></script>
 <script src="vendor/hash.js"></script>
 <script src="vendor/mustache.js"></script>
 <script src="js/script.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlCADrm9ekZAgICuxbrWXnRIUFWWkgwz4&callback=initMap"></script>
 </body>
 </html>

@@ -1,21 +1,18 @@
-'use strict';
+var carouselOptions = {
+    cellAlign: 'right',
+    contain: true,
+    pageDots: false,
+    cellSelector: '.carousel-cell',
+    hash: true
+}
+var carousel = new Flickity('.carousel', carouselOptions);
+var progressBar = document.querySelector('.progress-bar');
+carousel.on('scroll', function (progress) {
+    progress = Math.max(0, Math.min(1, progress));
+    progressBar.style.width = progress * 100 + '%';
+})
 
-(function(){
-    var carousel = document.querySelector('.carousel');
-    var flkty = new Flickity(carousel, {
-        pageDots: false,
-        hash: true
-    });
-    var restart = document.getElementById('restartBtn');
-    addEventListener('click', function(event) {
-        if (!matchesSelector (event.target, '.my-btn')) {
-            return;
-        }
-        flkty.select(0);
-    });
-    var progressBar = document.querySelector('.progress-bar');
-    flkty.on('scroll', function(progress) {
-        progress = Math.max(0, Math.min(1, progress));
-        progressBar.style.width = progress * 100 + '%';
-    });
-})();
+var btnReset = document.querySelector('.my-btn');
+btnReset.addEventListener('click', function () {
+    carousel.select(0, false, false);
+});

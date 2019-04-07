@@ -10,42 +10,50 @@
 </head>
 <body>
 <h1>Zadanie 14.1</h1>
-    <div class="carousel">
-        <div class="carousel-cell" style="background-image:url(images/hotel.jpg)" id="slide-0">
-            <div class="container">
-                <p>Hotel</p>
-                <p>Nasza baza wypadowa, bardzo polecamy! Super warunki za niewielkie pieniądze</p>
-            </div>
-        </div>
-        <div class="carousel-cell" style="background-image:url(images/beach.jpg)" id="slide-1">
-            <div class="container">
-                <p>Plaża</p>
-                <p>Fal nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma faaal..... Nie ma fal, nie ma faaaaal</p>
-            </div>
-        </div>
-        <div class="carousel-cell" style="background-image:url(images/coffee.jpg)" id="slide-2">
-            <div class="container">
-                <p>Kawiarnia</p>
-                <p>Nasza ulubiona kawiarnia</p>
-            </div>
-        </div>
-        <div class="carousel-cell" style="background-image:url(images/restaurant.jpg)" id="slide-3">
-            <div class="container">
-                <p>Restauracja</p>
-                <p>Oto nasza ulubiona knajpa. Stosunek jakość do ceny - poziom mistrz!</p>
-            </div>
-        </div>
-        <div class="carousel-cell" style="background-image:url(images/party.jpg)" id="slide-4">
-            <div class="container">
-                <p>Impreza</p>
-                <p>Impreza Full Moon Party, tylko tutaj!</p>
-            </div>
-        </div>
+<div class="carousel">
+
+</div>
+<script id="slide-template" type="x-tmpl-mustache">
+    <div class="carousel-cell" id="slide-{{id}}" style="background-image:  url({{image}})">
+        <div class="container">
+            <h1>{{title}}</h1>
+            {{{description}}}
+         </div>
     </div>
+</script>
+<script>
+    var slideData = [
+        {
+            title: 'Hotel',
+            image: 'images/hotel.jpg',
+            description: '<p>Nasza baza wypadowa, bardzo polecamy! Super warunki za niewielkie pieniądze</p>'
+        },
+        {
+            title: 'Plaża',
+            image: 'images/beach.jpg',
+            description: '<p>Fal nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma fal, nie ma faaal..... Nie ma fal, nie ma faaaaal</p>'
+        }, {
+            title: 'Kawiarnia',
+            image: 'images/coffee.jpg',
+            description: '<p>Nasza ulubiona kawiarnia</p>'
+        },
+        {
+            title: 'Restauracja',
+            image: 'images/restaurant.jpg',
+            description: '<p>Oto nasza ulubiona knajpa. Stosunek jakość do ceny - poziom mistrz!</p>'
+        },
+        {
+            title: 'Impreza',
+            image: 'images/party.jpg',
+            description: '<p>Impreza Full Moon Party, tylko tutaj!</p>'
+        }
+    ]
+</script>
 <div class="progress-bar"></div>
 <button class="my-btn" id="restartBtn">restart</button>
 <script src="vendor/flickity.pkgd.min.js"></script>
 <script src="vendor/hash.js"></script>
+<script src="vendor/mustache.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

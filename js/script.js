@@ -1,10 +1,21 @@
 var carouselOptions = {
-    cellAlign: 'right',
+    draggable: false,
     contain: true,
     pageDots: false,
     cellSelector: '.carousel-cell',
     hash: true
+
 }
+var slideTemplate = document.querySelector('#slide-template').innerHTML;
+Mustache.parse(slideTemplate);
+
+var slidesHtml = slideData.reduce(function(acc,slide,index) {
+    slide.id = index;
+    return acc += Mustache.render(slideTemplate, slide)
+}, '');
+
+document.querySelector('.carousel').insertAdjacentHTML('afterbegin', slidesHtml);
+
 var carousel = new Flickity('.carousel', carouselOptions);
 var progressBar = document.querySelector('.progress-bar');
 carousel.on('scroll', function (progress) {

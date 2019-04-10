@@ -4,16 +4,16 @@ var carouselOptions = {
     pageDots: false,
     cellSelector: '.carousel-cell',
     hash: true
-
 }
+
 var slideTemplate = document.querySelector('#slide-template').innerHTML;
 Mustache.parse(slideTemplate);
 
-var slidesHtml = '';
-slideData.forEach(function (slide, index) {
+var slidesHtml = slideData.reduce(function (acc, slide, index) {
     slide.id = index;
-    slidesHtml += Mustache.render(slideTemplate, slide);
-});
+    return acc += Mustache.render(slideTemplate, slide)
+}, '');
+
 
 document.querySelector('.carousel').insertAdjacentHTML('afterbegin', slidesHtml);
 
@@ -23,11 +23,9 @@ carousel.on('scroll', function (progress) {
     progress = Math.max(0, Math.min(1, progress));
     progressBar.style.width = progress * 100 + '%';
 });
-var preventMapCenter = false;
-carousel.on('change', function(index){
-    if(preventMapCenter) {
-        preventMapCenter = false;
-    } else {
+var MapCenter ;
+carousel.on('change', function (index) {
+    if (MapCenter) {
         newCoords = slideData[index].coords;
         map.panTo(newCoords);
     }
@@ -38,17 +36,20 @@ btnReset.addEventListener('click', function () {
     carousel.select(0, false, false);
 })
 
+var map = document.querySelector('map');
 window.initMap = function () {
+    map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 12, center: slideData[0].coords});
 
-    var map = new google.maps.Map(
-        document.getElementById('map'), { zoom: 18, center: slideData[0].coords });
-
-    slideData.forEach(function (slide) {
-        new google.maps.Marker({
+    slideData.forEach(function (slide, index) {
+        var marker = new google.maps.Marker({
             position: slide.coords,
             map: map,
             title: slide.title
         });
-    })
-
+        marker.addListener('click', function () {
+            MapCenter = true;
+            carousel.select(index, false, false);
+        });
+    });
 };
